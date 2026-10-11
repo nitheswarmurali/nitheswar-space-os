@@ -1,12 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
-  --bg:#08090B; --bg-2:#101216; --card:#14171C; --line:#282C33;
-  --fg:#F5F7FA; --fg-2:#9CA3AF; --fg-3:#697180;
+  --bg: #08090B; --bg-2: #101216; --card: #14171C; --line: #282C33;
+  --fg: #F5F7FA; --fg-2: #9CA3AF; --fg-3: #697180;
 }
 html, body { background: var(--bg); color: var(--fg); }
 * { border-color: var(--line); }
+
+/* Prevent horizontal scroll on mobile */
+html, body { overflow-x: hidden; }
+
+/* Leaflet tweaks */
 .leaflet-container { background: #0b0d10; font-family: inherit; }
 .leaflet-control-attribution {
   background: rgba(8,9,11,.85) !important;
@@ -14,6 +20,20 @@ html, body { background: var(--bg); color: var(--fg); }
   font-size: 10px !important;
 }
 .leaflet-control-attribution a { color: #9CA3AF !important; }
+
+/* Scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: #2a2e36; border-radius: 5px; }
+
+/* Tighten page padding on mobile */
+@media (max-width: 640px) {
+  .p-6 { padding: 1rem !important; }
+  .p-8 { padding: 1rem !important; }
+  .space-y-5 > * + * { margin-top: 1rem !important; }
+  h1.text-xl { font-size: 1.125rem !important; }
+  h1.text-2xl { font-size: 1.25rem !important; }
+}
+
+/* Make tables horizontally scrollable inside cards */
+.overflow-x-auto { -webkit-overflow-scrolling: touch; }
